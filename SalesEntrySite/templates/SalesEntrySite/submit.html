@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Successfully!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0, 0, 190, 0.4);
+        }
+
+        fieldset {
+            border: none;
+            margin-bottom: 20px;
+        }
+        b {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        
+        .gray-text {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+    
+<body>
+    <div class="container">
+    <h1>Thank you for submitting your sales data, {{ selected_store.store_name }}!</h1>
+    <p><h2>Submitted Data:</h2></p>
+    <p><b>Sales:</b> ${{ sales }}</p>
+    <p><b>Average Sale:</b> ${{ average_sale }}</p>
+    <p><b>Door Count:</b> {{ door_count }}</p>
+    <p class="gray-text">If any of these numbers look incorrect, please resubmit before 1:05PM. Happy selling!</p>
+    {% if average_sale == 420 and sales == 69%} <p class="gray-text">Made by Stephanie Fletcher Davey (7252) in 2024. Well done for finding this! Now get back to work >:(</p>{%endif%}
+    </div>
+</body>

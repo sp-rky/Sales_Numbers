@@ -1,0 +1,6 @@
+docker-compose.yml
+__pycache__
+/SalesEntrySite/__pycache__
+/Sales_Numbers/__pycache__
+/EmailHandlers/__pycache__
+.devcontainer

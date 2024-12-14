@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1PM Numbers Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0, 0, 190, 0.4);
+        }
+
+        fieldset {
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #00007B;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #000050;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 10px
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form action="/SalesEntrySite/submit" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend><h1>1PM Numbers Entry</h1></legend>
+
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            
+            <!-- Store Selection Dropdown -->
+            <label for="store">Store:</label>
+            <select name="store" id="store">
+                {% for store in stores_list %}
+                    <option value="{{ store.store_num }}">{{ store.store_name }}</option>
+                {% endfor %}
+            </select>
+
+            <!-- Numbers Entry -->
+            <label for="sales">Sales:</label>
+            <input type="text" name="sales" id="sales"><br>
+
+            <label for="average_sale">Average Sale:</label>
+            <input type="text" name="average_sale" id="average_sale"><br>
+
+            <label for="door_count">Door Count:</label>
+            <input type="text" name="door_count" id="door_count"><br>
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<div class="footer">
+    <p>Website made by Stephanie Fletcher-Davey (7252)</p>
+</div>
+</body>
+</html>

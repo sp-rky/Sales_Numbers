@@ -1,0 +1,2 @@
+class TooManySheetsError(Exception):
+    pass
