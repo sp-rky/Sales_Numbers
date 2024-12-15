@@ -90,30 +90,33 @@ try:
 except Exception as e:
     print(f"Error: {e}")
 
-# build the HTML table
-with open("emailhtmlheader.html") as f:
-    email_content = f.read()
-email_content += '<table border="1">\n'
-email_content += '<tr><th>Store</th><th>Sales</th><th>Average Sale</th><th>Door Count</th><th>Number of Sales</th><th>Conversion Rate</th><th>Budget</th><th>Percentage to Budget</th>'
-for row in table:
-    email_content += '<tr>\n'
-    for entry in row:
-        if "r!" in str(entry):
-            # highlight the cell red
-            email_content += f'<td id="HIGHLIGHTED">{str(entry)[2:]}</td>\n'
-        elif "a!" in str(entry):
-            # and add an empty row before the entry
-            email_content += '<td colspan="8" id="BOLD">Area Sales:</td>\n</tr>\n<tr>'
-            email_content += f'<td>{str(entry[2:])}</td>'
-        else:
-            email_content += f'<td>{entry}</td>\n'
-    email_content += '  </tr>\n'
+try:
+    # build the HTML table
+    with open("/code/emailhtmlheader.html") as f:
+        email_content = f.read()
+    email_content += '<table border="1">\n'
+    email_content += '<tr><th>Store</th><th>Sales</th><th>Average Sale</th><th>Door Count</th><th>Number of Sales</th><th>Conversion Rate</th><th>Budget</th><th>Percentage to Budget</th>'
+    for row in table:
+        email_content += '<tr>\n'
+        for entry in row:
+            if "r!" in str(entry):
+                # highlight the cell red
+                email_content += f'<td id="HIGHLIGHTED">{str(entry)[2:]}</td>\n'
+            elif "a!" in str(entry):
+                # and add an empty row before the entry
+                email_content += '<td colspan="8" id="BOLD">Area Sales:</td>\n</tr>\n<tr>'
+                email_content += f'<td>{str(entry[2:])}</td>'
+            else:
+                email_content += f'<td>{entry}</td>\n'
+        email_content += '  </tr>\n'
 
-email_content += '</table>'
+    email_content += '</table>'
 
-email_content += f'\n<p>Generated on {datetime.now().strftime("%d/%m/%Y")} at {datetime.now().strftime("%H:%M:%S")}.</p>'
+    email_content += f'\n<p>Generated on {datetime.now().strftime("%d/%m/%Y")} at {datetime.now().strftime("%H:%M:%S")}.</p>'
 
-email = Email(os.environ.get("SalesEmailAddress"), os.environ.get("SalesEmailPassword"))
-email_addresses = [store.store_email for store in Store.objects.order_by("store_num")] + os.environ.get("ExtraEmailRecipients").split(",")
-email.send_email("salesnumbers@jaycarsalesentry.com", email_addresses, f"1PM Numbers {current_date.isoformat()}", email_content)
+    email = Email(os.environ.get("SalesEmailAddress"), os.environ.get("SalesEmailPassword"))
+    email_addresses = [store.store_email for store in Store.objects.order_by("store_num")] + os.environ.get("ExtraEmailRecipients").split(",")
+    email.send_email("salesnumbers@jaycarsalesentry.com", email_addresses, f"1PM Numbers {current_date.isoformat()}", email_content)
+except Exception as e:
+    print(f"Error: {e}")
 
