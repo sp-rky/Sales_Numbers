@@ -28,13 +28,15 @@ services:
     environment:
       - container=True
       - TZ=Australia/Perth
-      - IMAPServer=imap.example.com
-      - SMTPServer=smtp.example.com
+      - DomainName=example.com
+      - IMAPServer=imap.mailexample.com
+      - SMTPServer=smtp.mailexample.com
       - BudgetEmailAddress=budgets@example.com
       - BudgetEmailPassword=1234
       - SalesEmailAddress=sales@example.com
       - SalesEmailPassword=5678
       - ExtraEmailRecipients=example1@axample.com,example2@example.com
+      - DjangoSecretKey=
 ```
 4. Start the Docker container: `docker compose up -d`
 5. Go to your browser and check that the container is running correctly by going to the following address: `localhost:8000/admin` and logging in with `admin` as the username and password.
