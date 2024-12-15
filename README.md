@@ -34,6 +34,7 @@ services:
       - BudgetEmailPassword=1234
       - SalesEmailAddress=sales@example.com
       - SalesEmailPassword=5678
+      - ExtraEmailRecipients=example1@axample.com,example2@example.com
 ```
 4. Start the Docker container: `docker compose up -d`
 5. Go to your browser and check that the container is running correctly by going to the following address: `localhost:8000/admin` and logging in with `admin` as the username and password.
