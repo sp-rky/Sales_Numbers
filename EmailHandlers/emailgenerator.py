@@ -91,7 +91,7 @@ except Exception as e:
     print(f"Error: {e}")
 
 # build the HTML table
-with open("/code/emailhtmlheader.html") as f:
+with open("emailhtmlheader.html") as f:
     email_content = f.read()
 email_content += '<table border="1">\n'
 email_content += '<tr><th>Store</th><th>Sales</th><th>Average Sale</th><th>Door Count</th><th>Number of Sales</th><th>Conversion Rate</th><th>Budget</th><th>Percentage to Budget</th>'
@@ -114,6 +114,6 @@ email_content += '</table>'
 email_content += f'\n<p>Generated on {datetime.now().strftime("%d/%m/%Y")} at {datetime.now().strftime("%H:%M:%S")}.</p>'
 
 email = Email(os.environ.get("SalesEmailAddress"), os.environ.get("SalesEmailPassword"))
-
-email.send_email("salesnumbers@jaycarsalesentry.com", "stephfd2020@gmail.com", f"1PM Numbers {current_date.isoformat()}", email_content)
+email_addresses = [store.store_email for store in Store.objects.order_by("store_num")] + os.environ.get("ExtraEmailRecipients").split(",")
+email.send_email("salesnumbers@jaycarsalesentry.com", email_addresses, f"1PM Numbers {current_date.isoformat()}", email_content)
 
