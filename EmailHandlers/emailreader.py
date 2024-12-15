@@ -88,10 +88,10 @@ class Email:
         
         return attachments
 
-    def send_email(self, from_addr, to_addr, subject, body):
+    def send_email(self, from_addr, to_addrs, subject, body):
         msg = MIMEMultipart()
         msg['From'] = from_addr
-        msg['To'] = to_addr
+        msg['To'] = ', '.join(to_addrs)
         msg['Subject'] = subject
         
         msg.attach(MIMEText(body, 'HTML'))
@@ -100,8 +100,8 @@ class Email:
             with smtplib.SMTP_SSL(os.environ.get("SMTPServer"), 465) as server:
                 server.login(self.username, self.password)
                 text = msg.as_string()
-                server.sendmail(from_addr, to_addr, text)
-                print(f"Email sent successfully at {datetime.now().isoformat()}")
+                server.sendmail(from_addr, to_addrs, text)
+                print(f"Email sent successfully to {', '.join(to_addrs)} at {datetime.now().isoformat()}")
         except Exception as e:
             print(f"Error sending email: {e}")
 
