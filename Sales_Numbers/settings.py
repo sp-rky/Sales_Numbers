@@ -102,14 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.purelymail.com'  # SMTP server host
-EMAIL_PORT = 465  # SMTP server port (587 for TLS, 465 for SSL)
-EMAIL_USE_TLS = False  # True for TLS, False for SSL
-EMAIL_HOST_USER = 'errors@jaycarsalesentry.com'  # SMTP server username
-EMAIL_HOST_PASSWORD = 'cgmrsiuvxyfxlrjvefxa'  # SMTP server password
-EMAIL_USE_SSL = True  # Set to True if using SSL
-DEFAULT_FROM_EMAIL = 'errors@jaycarsalesentry.com'  # Default sender email address
 '''
 LOGGING = {
     "version": 1,
