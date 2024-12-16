@@ -1,0 +1,48 @@
+services:
+  web:
+    build: ghcr.io/sp-rky/sales_numbers/django_app:latest
+    #command: gunicorn Sales_Numbers.wsgi:application --bind 0.0.0.0:8000
+    expose:
+      - 8000
+    environment:
+      - container=True
+      - TZ=Australia/Perth
+      - IMAPServer=imap.example.com
+      - SMTPServer=smtp.example.com
+      - BudgetEmailAddress=budgets@example.com
+      - BudgetEmailPassword=password
+      - SalesEmailAddress=sales@example.com
+      - SalesEmailPassword=password
+      - ExtraEmailRecipients=example1@example.com,example2@example.com
+      - DjangoSecretKey=foo
+      - DomainName=jaycarsalesentry.com
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=django_db
+      - SQL_USER=example
+      - SQL_PASSWORD=password
+      - SQL_HOST=db
+      - SQL_PORT=5432
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /code
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=example
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=django_db
+
+  nginx:
+    build: ghcr.io/sp-rky/sales_numbers/nginx:latest
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
