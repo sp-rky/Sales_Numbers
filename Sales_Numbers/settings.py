@@ -28,7 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get("DomainName")]
 
-CSRF_TRUSTED_ORIGINS = [f"https://{os.environ.get("DomainName")}", f"http://{os.environ.get("DomainName")}"]
+CSRF_TRUSTED_ORIGINS = [f"https://{os.environ.get('DomainName')}", f"http://{os.environ.get('DomainName')}"]
 
 
 # Application definition
