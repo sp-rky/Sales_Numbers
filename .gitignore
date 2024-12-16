@@ -1,4 +1,4 @@
-docker-compose.yml
+docker-compose.dev.yml
 __pycache__
 /SalesEntrySite/__pycache__
 /Sales_Numbers/__pycache__
