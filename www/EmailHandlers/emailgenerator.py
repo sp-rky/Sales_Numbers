@@ -9,8 +9,8 @@ try:
     # django setup
     if os.environ.get("container") == "True":
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Sales_Numbers.settings')
-        os.environ['PYTHONPATH'] = '/code'
-        sys.path.append('/code')
+        os.environ['PYTHONPATH'] = '/code/www'
+        sys.path.append('/code/www')
         
     else:
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Sales_Numbers.settings')
@@ -92,7 +92,7 @@ except Exception as e:
 
 try:
     # build the HTML table
-    with open("/code/emailhtmlheader.html") as f:
+    with open("/code/www/emailhtmlheader.html") as f:
         email_content = f.read()
     email_content += '<table border="1">\n'
     email_content += '<tr><th>Store</th><th>Sales</th><th>Average Sale</th><th>Door Count</th><th>Number of Sales</th><th>Conversion Rate</th><th>Budget</th><th>Percentage to Budget</th>'

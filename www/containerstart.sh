@@ -7,4 +7,4 @@ printenv > /etc/environment
 cron -L 15
 
 # start the django server (needs to be changed to run on nginx at some point)
-python3 manage.py runserver 0.0.0.0:8000
+python3 manage.py runserver 0.0.0.0:8000 >> /var/log/django.log

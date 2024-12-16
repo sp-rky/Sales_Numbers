@@ -16,8 +16,8 @@ try:
     # django setup
     if os.environ.get("container") == "True":
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Sales_Numbers.settings')
-        os.environ['PYTHONPATH'] = '/code'
-        sys.path.append('/code')
+        os.environ['PYTHONPATH'] = '/code/www'
+        sys.path.append('/code/www')
     else:
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Sales_Numbers.settings')
         os.environ['PYTHONPATH'] = '/home/stephaniefletcher/Documents/Sales_Numbers'
@@ -36,7 +36,7 @@ stores_list = Store.objects.order_by("store_num")
 stores_list = [store.store_num for store in stores_list]
 
 # get current working directory
-working_directory = "/code"
+working_directory = "/code/www"
 
 # set up the email class
 try:

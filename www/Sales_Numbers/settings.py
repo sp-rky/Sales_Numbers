@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("DjangoSecretKey")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [os.environ.get("DomainName")]
+ALLOWED_HOSTS = [os.environ.get("DomainName"), "localhost", "127.0.0.1"]
 
 CSRF_TRUSTED_ORIGINS = [f"https://{os.environ.get('DomainName')}", f"http://{os.environ.get('DomainName')}"]
 
