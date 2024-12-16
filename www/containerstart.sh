@@ -18,6 +18,7 @@ fi
 cron -L 15
 
 python manage.py migrate
+python manage.py createsuperuser --noinput
 
 # start the django server
 #python3 manage.py runserver 0.0.0.0:8000 >> /var/log/django.log
