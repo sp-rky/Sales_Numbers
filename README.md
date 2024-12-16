@@ -22,7 +22,7 @@ The entire program is built to be run in a Docker container for portability.
 ```
 services:
   web:
-    image: 
+    image: ghcr.io/sp-rky/sales_numbers:[VERSION]
     ports:
       - "8000:8000"
     environment:
