@@ -1,7 +1,6 @@
 services:
   web:
     build: ghcr.io/sp-rky/sales_numbers/django_app:latest
-    #command: gunicorn Sales_Numbers.wsgi:application --bind 0.0.0.0:8000
     expose:
       - 8000
     environment:
@@ -22,11 +21,6 @@ services:
       - SQL_PASSWORD=password
       - SQL_HOST=db
       - SQL_PORT=5432
-    develop:
-      watch:
-        - action: sync
-          path: .
-          target: /code
 
   db:
     image: postgres:15
