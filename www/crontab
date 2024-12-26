@@ -4,5 +4,5 @@
 # second entry runs parser.py at 1200 daily. 
 PATH=/usr/bin:/usr/local/bin:/bin:/code
 SHELL=/bin/bash
-5 13 * * * echo "Sending 1PM Numbers Email..." >> /var/log/cron.log && /usr/local/bin/python3 /code/www/EmailHandlers/emailgenerator.py >> /var/log/cron.log
-0 12 * * * /usr/local/bin/python3 /code/www/EmailHandlers/parser.py >> /var/log/cron.log
+5 13 * * * echo "Sending 1PM Numbers Email..." >> /var/log/cron.log && /usr/local/bin/python3 /code/EmailHandlers/emailgenerator.py >> /var/log/cron.log
+0 12 * * * /usr/local/bin/python3 /code/EmailHandlers/parser.py >> /var/log/cron.log
